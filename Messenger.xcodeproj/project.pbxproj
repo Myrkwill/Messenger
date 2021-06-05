@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		A573E608266BD5990048A94F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E607266BD5990048A94F /* AppDelegate.swift */; };
 		A573E60A266BD5990048A94F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E609266BD5990048A94F /* SceneDelegate.swift */; };
-		A573E60C266BD5990048A94F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E60B266BD5990048A94F /* ViewController.swift */; };
+		A573E60C266BD5990048A94F /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E60B266BD5990048A94F /* ConversationViewController.swift */; };
 		A573E60F266BD5990048A94F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A573E60D266BD5990048A94F /* Main.storyboard */; };
 		A573E611266BD59C0048A94F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A573E610266BD59C0048A94F /* Assets.xcassets */; };
 		A573E614266BD59C0048A94F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A573E612266BD59C0048A94F /* LaunchScreen.storyboard */; };
+		A573E622266BD7B30048A94F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E621266BD7B30048A94F /* LoginViewController.swift */; };
+		A573E624266BD7C10048A94F /* RegesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E623266BD7C10048A94F /* RegesterViewController.swift */; };
+		A573E626266BD7D70048A94F /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E625266BD7D70048A94F /* PhotoViewerViewController.swift */; };
+		A573E628266BD7EB0048A94F /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E627266BD7EB0048A94F /* VideoPlayerViewController.swift */; };
+		A573E62A266BD8020048A94F /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E629266BD8020048A94F /* NewConversationViewController.swift */; };
+		A573E62C266BD8120048A94F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E62B266BD8120048A94F /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A573E604266BD5990048A94F /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A573E607266BD5990048A94F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A573E609266BD5990048A94F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A573E60B266BD5990048A94F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A573E60B266BD5990048A94F /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		A573E60E266BD5990048A94F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A573E610266BD59C0048A94F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A573E613266BD59C0048A94F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A573E615266BD59C0048A94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A573E621266BD7B30048A94F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A573E623266BD7C10048A94F /* RegesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegesterViewController.swift; sourceTree = "<group>"; };
+		A573E625266BD7D70048A94F /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		A573E627266BD7EB0048A94F /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		A573E629266BD8020048A94F /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
+		A573E62B266BD8120048A94F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,69 @@
 		A573E606266BD5990048A94F /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
-				A573E607266BD5990048A94F /* AppDelegate.swift */,
-				A573E609266BD5990048A94F /* SceneDelegate.swift */,
-				A573E60B266BD5990048A94F /* ViewController.swift */,
-				A573E60D266BD5990048A94F /* Main.storyboard */,
-				A573E610266BD59C0048A94F /* Assets.xcassets */,
-				A573E612266BD59C0048A94F /* LaunchScreen.storyboard */,
+				A573E61F266BD6B70048A94F /* Resources */,
+				A573E61E266BD6AC0048A94F /* Models */,
+				A573E61D266BD6990048A94F /* ViewModels */,
+				A573E61C266BD6930048A94F /* Views */,
+				A573E61B266BD68C0048A94F /* Controllers */,
 				A573E615266BD59C0048A94F /* Info.plist */,
 			);
 			path = Messenger;
+			sourceTree = "<group>";
+		};
+		A573E61B266BD68C0048A94F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A573E60B266BD5990048A94F /* ConversationViewController.swift */,
+				A573E621266BD7B30048A94F /* LoginViewController.swift */,
+				A573E623266BD7C10048A94F /* RegesterViewController.swift */,
+				A573E625266BD7D70048A94F /* PhotoViewerViewController.swift */,
+				A573E627266BD7EB0048A94F /* VideoPlayerViewController.swift */,
+				A573E629266BD8020048A94F /* NewConversationViewController.swift */,
+				A573E62B266BD8120048A94F /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A573E61C266BD6930048A94F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A573E620266BD6E90048A94F /* Storyboards */,
+				A573E610266BD59C0048A94F /* Assets.xcassets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A573E61D266BD6990048A94F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A573E61E266BD6AC0048A94F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A573E61F266BD6B70048A94F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A573E607266BD5990048A94F /* AppDelegate.swift */,
+				A573E609266BD5990048A94F /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A573E620266BD6E90048A94F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A573E60D266BD5990048A94F /* Main.storyboard */,
+				A573E612266BD59C0048A94F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +203,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A573E60C266BD5990048A94F /* ViewController.swift in Sources */,
+				A573E622266BD7B30048A94F /* LoginViewController.swift in Sources */,
+				A573E624266BD7C10048A94F /* RegesterViewController.swift in Sources */,
+				A573E62A266BD8020048A94F /* NewConversationViewController.swift in Sources */,
+				A573E60C266BD5990048A94F /* ConversationViewController.swift in Sources */,
+				A573E628266BD7EB0048A94F /* VideoPlayerViewController.swift in Sources */,
 				A573E608266BD5990048A94F /* AppDelegate.swift in Sources */,
+				A573E62C266BD8120048A94F /* ProfileViewController.swift in Sources */,
 				A573E60A266BD5990048A94F /* SceneDelegate.swift in Sources */,
+				A573E626266BD7D70048A94F /* PhotoViewerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
