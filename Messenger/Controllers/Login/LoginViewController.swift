@@ -107,7 +107,8 @@ class LoginViewController: UIViewController {
             return
         }
         
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let self = self else { return }
             guard let result = authResult, error == nil else {
                 print("Failed to log in user with email: \(email)")
                 return
@@ -115,6 +116,7 @@ class LoginViewController: UIViewController {
             
             let user = result.user
             print("Logged in User: \(user)")
+            self.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
     

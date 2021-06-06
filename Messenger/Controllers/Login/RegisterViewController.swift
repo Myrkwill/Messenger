@@ -11,7 +11,7 @@ class RegisterViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
@@ -146,14 +146,25 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let result = authResult, error == nil else {
-                print("Error creating error")
+        DatabaseManager.shared.userExists(with: email) { [weak self] exist in
+            guard let self = self else { return }
+            guard !exist else {
+                // user already exist
+                self.alertUserLoginError(message: "Looks like a user account for that email address already exist.")
                 return
             }
             
-            let user = result.user
-            print("Create user \(user)")
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                guard let result = authResult, error == nil else {
+                    print("Error creating error")
+                    return
+                }
+                
+                let chatAppUser = ChatAppUser(firstName: firstName, lastName: lastName, email: email)
+                DatabaseManager.shared.insertUser(with: chatAppUser)
+                
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
@@ -161,10 +172,10 @@ class RegisterViewController: UIViewController {
         presentPhotoActionSheet()
     }
     
-    func alertUserLoginError() {
+    func alertUserLoginError(message: String = "Please enter all information to create a new account.") {
         let alert = UIAlertController(
             title: "Woops",
-            message: "Please enter all information to create a new account.",
+            message: message,
             preferredStyle: .alert
         )
         
