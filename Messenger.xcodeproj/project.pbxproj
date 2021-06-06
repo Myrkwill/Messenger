@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,11 +14,16 @@
 		A573E611266BD59C0048A94F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A573E610266BD59C0048A94F /* Assets.xcassets */; };
 		A573E614266BD59C0048A94F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A573E612266BD59C0048A94F /* LaunchScreen.storyboard */; };
 		A573E622266BD7B30048A94F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E621266BD7B30048A94F /* LoginViewController.swift */; };
-		A573E624266BD7C10048A94F /* RegesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E623266BD7C10048A94F /* RegesterViewController.swift */; };
+		A573E624266BD7C10048A94F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E623266BD7C10048A94F /* RegisterViewController.swift */; };
 		A573E626266BD7D70048A94F /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E625266BD7D70048A94F /* PhotoViewerViewController.swift */; };
 		A573E628266BD7EB0048A94F /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E627266BD7EB0048A94F /* VideoPlayerViewController.swift */; };
 		A573E62A266BD8020048A94F /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E629266BD8020048A94F /* NewConversationViewController.swift */; };
 		A573E62C266BD8120048A94F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E62B266BD8120048A94F /* ProfileViewController.swift */; };
+		A573E630266BDF350048A94F /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E62F266BDF350048A94F /* View+Extension.swift */; };
+		A573E633266D08BA0048A94F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A573E632266D08BA0048A94F /* FirebaseAuth */; };
+		A573E635266D08BA0048A94F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = A573E634266D08BA0048A94F /* FirebaseDatabase */; };
+		A573E637266D08BA0048A94F /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = A573E636266D08BA0048A94F /* FirebaseDatabaseSwift-Beta */; };
+		A573E639266D099C0048A94F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A573E638266D099C0048A94F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,11 +36,13 @@
 		A573E613266BD59C0048A94F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A573E615266BD59C0048A94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A573E621266BD7B30048A94F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		A573E623266BD7C10048A94F /* RegesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegesterViewController.swift; sourceTree = "<group>"; };
+		A573E623266BD7C10048A94F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A573E625266BD7D70048A94F /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		A573E627266BD7EB0048A94F /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		A573E629266BD8020048A94F /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		A573E62B266BD8120048A94F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A573E62F266BDF350048A94F /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		A573E638266D099C0048A94F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A573E637266D08BA0048A94F /* FirebaseDatabaseSwift-Beta in Frameworks */,
+				A573E635266D08BA0048A94F /* FirebaseDatabase in Frameworks */,
+				A573E633266D08BA0048A94F /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +78,8 @@
 		A573E606266BD5990048A94F /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				A573E638266D099C0048A94F /* GoogleService-Info.plist */,
+				A573E62E266BDF260048A94F /* Extensions */,
 				A573E61F266BD6B70048A94F /* Resources */,
 				A573E61E266BD6AC0048A94F /* Models */,
 				A573E61D266BD6990048A94F /* ViewModels */,
@@ -82,8 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				A573E60B266BD5990048A94F /* ConversationViewController.swift */,
-				A573E621266BD7B30048A94F /* LoginViewController.swift */,
-				A573E623266BD7C10048A94F /* RegesterViewController.swift */,
+				A573E62D266BD8940048A94F /* Login */,
 				A573E625266BD7D70048A94F /* PhotoViewerViewController.swift */,
 				A573E627266BD7EB0048A94F /* VideoPlayerViewController.swift */,
 				A573E629266BD8020048A94F /* NewConversationViewController.swift */,
@@ -133,6 +144,23 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		A573E62D266BD8940048A94F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A573E621266BD7B30048A94F /* LoginViewController.swift */,
+				A573E623266BD7C10048A94F /* RegisterViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A573E62E266BDF260048A94F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A573E62F266BDF350048A94F /* View+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +177,11 @@
 			dependencies = (
 			);
 			name = Messenger;
+			packageProductDependencies = (
+				A573E632266D08BA0048A94F /* FirebaseAuth */,
+				A573E634266D08BA0048A94F /* FirebaseDatabase */,
+				A573E636266D08BA0048A94F /* FirebaseDatabaseSwift-Beta */,
+			);
 			productName = Messenger;
 			productReference = A573E604266BD5990048A94F /* Messenger.app */;
 			productType = "com.apple.product-type.application";
@@ -176,6 +209,9 @@
 				Base,
 			);
 			mainGroup = A573E5FB266BD5990048A94F;
+			packageReferences = (
+				A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = A573E605266BD5990048A94F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -191,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A573E614266BD59C0048A94F /* LaunchScreen.storyboard in Resources */,
+				A573E639266D099C0048A94F /* GoogleService-Info.plist in Resources */,
 				A573E611266BD59C0048A94F /* Assets.xcassets in Resources */,
 				A573E60F266BD5990048A94F /* Main.storyboard in Resources */,
 			);
@@ -203,8 +240,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A573E630266BDF350048A94F /* View+Extension.swift in Sources */,
 				A573E622266BD7B30048A94F /* LoginViewController.swift in Sources */,
-				A573E624266BD7C10048A94F /* RegesterViewController.swift in Sources */,
+				A573E624266BD7C10048A94F /* RegisterViewController.swift in Sources */,
 				A573E62A266BD8020048A94F /* NewConversationViewController.swift in Sources */,
 				A573E60C266BD5990048A94F /* ConversationViewController.swift in Sources */,
 				A573E628266BD7EB0048A94F /* VideoPlayerViewController.swift in Sources */,
@@ -413,6 +451,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A573E632266D08BA0048A94F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A573E634266D08BA0048A94F /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		A573E636266D08BA0048A94F /* FirebaseDatabaseSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseDatabaseSwift-Beta";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A573E5FC266BD5990048A94F /* Project object */;
 }

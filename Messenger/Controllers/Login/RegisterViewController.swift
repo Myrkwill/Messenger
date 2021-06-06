@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
 
@@ -145,7 +146,15 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        // Firebase log in
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            guard let result = authResult, error == nil else {
+                print("Error creating error")
+                return
+            }
+            
+            let user = result.user
+            print("Create user \(user)")
+        }
     }
     
     @objc private func changeProfileButtonAction() {
