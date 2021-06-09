@@ -155,12 +155,12 @@ class RegisterViewController: UIViewController {
             }
             
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                guard let result = authResult, error == nil else {
+                guard authResult != nil, error == nil else {
                     print("Error creating error")
                     return
                 }
                 
-                let chatAppUser = ChatAppUser(firstName: firstName, lastName: lastName, email: email)
+                let chatAppUser = ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email)
                 DatabaseManager.shared.insertUser(with: chatAppUser)
                 
                 self.navigationController?.dismiss(animated: true, completion: nil)

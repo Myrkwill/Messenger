@@ -25,6 +25,7 @@
 		A573E637266D08BA0048A94F /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = A573E636266D08BA0048A94F /* FirebaseDatabaseSwift-Beta */; };
 		A573E639266D099C0048A94F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A573E638266D099C0048A94F /* GoogleService-Info.plist */; };
 		A573E63C266D1FF40048A94F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573E63B266D1FF40048A94F /* DatabaseManager.swift */; };
+		A573E63F266D3E160048A94F /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = A573E63E266D3E160048A94F /* FacebookLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A573E63F266D3E160048A94F /* FacebookLogin in Frameworks */,
 				A573E637266D08BA0048A94F /* FirebaseDatabaseSwift-Beta in Frameworks */,
 				A573E635266D08BA0048A94F /* FirebaseDatabase in Frameworks */,
 				A573E633266D08BA0048A94F /* FirebaseAuth in Frameworks */,
@@ -192,6 +194,7 @@
 				A573E632266D08BA0048A94F /* FirebaseAuth */,
 				A573E634266D08BA0048A94F /* FirebaseDatabase */,
 				A573E636266D08BA0048A94F /* FirebaseDatabaseSwift-Beta */,
+				A573E63E266D3E160048A94F /* FacebookLogin */,
 			);
 			productName = Messenger;
 			productReference = A573E604266BD5990048A94F /* Messenger.app */;
@@ -222,6 +225,7 @@
 			mainGroup = A573E5FB266BD5990048A94F;
 			packageReferences = (
 				A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A573E63D266D3E160048A94F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = A573E605266BD5990048A94F /* Products */;
 			projectDirPath = "";
@@ -473,6 +477,14 @@
 				minimumVersion = 8.1.0;
 			};
 		};
+		A573E63D266D3E160048A94F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -490,6 +502,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseDatabaseSwift-Beta";
+		};
+		A573E63E266D3E160048A94F /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A573E63D266D3E160048A94F /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
