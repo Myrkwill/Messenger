@@ -32,6 +32,9 @@
 		A5A3383626710CE3003CCCF4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A5A3383526710CE3003CCCF4 /* RealmSwift */; };
 		A5A3383926710D3B003CCCF4 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A5A3383826710D3B003CCCF4 /* SDWebImage */; };
 		A5A3383B267114D1003CCCF4 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3383A267114D1003CCCF4 /* ChatViewController.swift */; };
+		A5A3383D26711BDB003CCCF4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A5A3383C26711BDB003CCCF4 /* FirebaseStorage */; };
+		A5A3383F26711BDB003CCCF4 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = A5A3383E26711BDB003CCCF4 /* FirebaseStorageSwift-Beta */; };
+		A5A3384126712008003CCCF4 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A3384026712008003CCCF4 /* StorageManager.swift */; };
 		BDA13B93418C88ABB9A153AF /* Pods_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A26191D1C37C87650D67EF3 /* Pods_Messenger.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,7 @@
 		A573E63B266D1FF40048A94F /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		A5A3382C2670FD50003CCCF4 /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
 		A5A3383A267114D1003CCCF4 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		A5A3384026712008003CCCF4 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		DF4E434F6AC1607562548FFE /* Pods-Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.debug.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,11 +72,13 @@
 				A5A3383626710CE3003CCCF4 /* RealmSwift in Frameworks */,
 				A573E63F266D3E160048A94F /* FacebookLogin in Frameworks */,
 				A5A3383326710BD3003CCCF4 /* JGProgressHUD in Frameworks */,
+				A5A3383D26711BDB003CCCF4 /* FirebaseStorage in Frameworks */,
 				A573E637266D08BA0048A94F /* FirebaseDatabaseSwift-Beta in Frameworks */,
 				A573E635266D08BA0048A94F /* FirebaseDatabase in Frameworks */,
 				A5A3383026710B9B003CCCF4 /* MessageKit in Frameworks */,
 				A5A3383926710D3B003CCCF4 /* SDWebImage in Frameworks */,
 				A573E633266D08BA0048A94F /* FirebaseAuth in Frameworks */,
+				A5A3383F26711BDB003CCCF4 /* FirebaseStorageSwift-Beta in Frameworks */,
 				BDA13B93418C88ABB9A153AF /* Pods_Messenger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				A573E63B266D1FF40048A94F /* DatabaseManager.swift */,
+				A5A3384026712008003CCCF4 /* StorageManager.swift */,
 			);
 			path = "Services ";
 			sourceTree = "<group>";
@@ -240,6 +247,8 @@
 				A5A3383226710BD3003CCCF4 /* JGProgressHUD */,
 				A5A3383526710CE3003CCCF4 /* RealmSwift */,
 				A5A3383826710D3B003CCCF4 /* SDWebImage */,
+				A5A3383C26711BDB003CCCF4 /* FirebaseStorage */,
+				A5A3383E26711BDB003CCCF4 /* FirebaseStorageSwift-Beta */,
 			);
 			productName = Messenger;
 			productReference = A573E604266BD5990048A94F /* Messenger.app */;
@@ -366,6 +375,7 @@
 				A573E630266BDF350048A94F /* UIView+Extension.swift in Sources */,
 				A573E63C266D1FF40048A94F /* DatabaseManager.swift in Sources */,
 				A573E622266BD7B30048A94F /* LoginViewController.swift in Sources */,
+				A5A3384126712008003CCCF4 /* StorageManager.swift in Sources */,
 				A573E624266BD7C10048A94F /* RegisterViewController.swift in Sources */,
 				A573E62A266BD8020048A94F /* NewConversationViewController.swift in Sources */,
 				A5A3382D2670FD50003CCCF4 /* NSNotification+Extension.swift in Sources */,
@@ -671,6 +681,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A5A3383726710D3B003CCCF4 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		A5A3383C26711BDB003CCCF4 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		A5A3383E26711BDB003CCCF4 /* FirebaseStorageSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A573E631266D08BA0048A94F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageSwift-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

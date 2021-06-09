@@ -51,8 +51,29 @@ extension AppDelegate: GIDSignInDelegate {
         }
         DatabaseManager.shared.userExists(with: email) { exist in
             if !exist {
-                let chatAppUser = ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email)
-                DatabaseManager.shared.insertUser(with: chatAppUser)
+                let chatUser = ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email)
+                DatabaseManager.shared.insertUser(with: chatUser) { success in
+                    if success {
+                        // upload image
+                        guard user.profile.hasImage, let url = user.profile.imageURL(withDimension: 200) else {
+                            return
+                        }
+                        
+                        URLSession.shared.dataTask(with: url) { data, _, error in
+                            guard let data = data else { return }
+                            let fileName = chatUser.profilePictureFileName
+                            StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName) { result in
+                                switch result {
+                                case .success(let downloadUrl):
+                                    UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                                    print(downloadUrl)
+                                case .failure(let error):
+                                    print("Storage manager error: \(error)")
+                                }
+                            }
+                        }.resume()
+                    }
+                }
             }
         }
         
