@@ -65,8 +65,20 @@ class ConversationsViewController: UIViewController {
     
     @objc private func composeButtonAction() {
         let viewController = NewConversationViewController()
+        viewController.completion = { [weak self] result in
+            self?.createNewConversation(with: result)
+        }
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true)
+    }
+    
+    private func createNewConversation(with user: [String: String]) {
+        guard let name = user["name"], let email = user["email"] else { return }
+        
+        let viewController = ChatViewController(with: email)
+        viewController.title = name
+        viewController.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
@@ -87,11 +99,10 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let viewController = ChatViewController()
+        let viewController = ChatViewController(with: "")
         viewController.title = "Mary Smith"
         viewController.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(viewController, animated: true)
-        
     }
     
 }
