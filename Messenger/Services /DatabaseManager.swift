@@ -115,12 +115,15 @@ extension DatabaseManager {
 extension DatabaseManager {
     
     /// Creates a new conversation with target user email and first message sent
-    public func createNewConversation(with otherUserEmail: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+    public func createNewConversation(with otherUserEmail: String, name: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+        print("Create New Conversation")
         guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
               let currentName = UserDefaults.standard.value(forKey: "name") as? String
         else {
                 return
         }
+        
+        print("Me: \(currentName) \(currentEmail)")
         
         let safeEmail = DatabaseManager.safeEmail(emailAddress: currentEmail)
         let reference = database.child("\(safeEmail)")

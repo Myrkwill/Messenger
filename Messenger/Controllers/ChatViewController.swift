@@ -116,35 +116,36 @@ extension ChatViewController: MessagesLayoutDelegate, MessagesDisplayDelegate, M
 extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        guard text.replacingOccurrences(of: " ", with: "").isEmpty,
+        guard !text.replacingOccurrences(of: " ", with: "").isEmpty,
               let sender = sender,
               let messageId = createMessageId()
         else {
             return
         }
         
+        let message = Message(
+            sender: sender,
+            messageId: messageId,
+            sentDate: Date(),
+            kind: .text(text)
+        )
+        
         if isNewConversation {
-            let message = Message(
-                sender: sender,
-                messageId: messageId,
-                sentDate: Date(),
-                kind: .text(text)
-            )
-            DatabaseManager.shared.createNewConversation(with: otherUserEmail, firstMessage: message) { success in
+            
+            DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: message) { success in
                 if success {
                     
                 } else {
                     
                 }
             }
+            
         } else {
             
         }
     }
     
     private func createMessageId() -> String? {
-        // date, otherUserEmail, senderEmail, randomInt
-        
         guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else {
             return nil
         }
