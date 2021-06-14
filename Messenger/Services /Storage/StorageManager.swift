@@ -3,15 +3,29 @@ import FirebaseStorage
 
 final class StorageManager {
     
+    public enum FileExtension: String {
+        case png = ".png"
+        case mov = ".mov"
+    }
+    
     static let shared = StorageManager()
     private let storage = Storage.storage().reference()
     
     private init() {}
     
-    public typealias UploadPictureCompletion = (Result<String, Error>) -> Void
+    public typealias UploadCompletion = (Result<String, Error>) -> Void
+    
+    static func fileName(forMessageId: String, fileExtension: FileExtension) -> String {
+        let fileName = "photo_message_" + forMessageId.replacingOccurrences(of: " ", with: "-") + fileExtension.rawValue
+        return fileName
+    }
+    
+    static func pathProfilePicture(by email: String) -> String {
+        return "images/\(email)_profile_picture.png"
+    }
     
     /// Upload picture ti firebase storage and return completion with url string to download
-    public func uploadProfilePicture(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
+    public func uploadProfilePicture(with data: Data, fileName: String, completion: @escaping UploadCompletion) {
         storage.child("images/\(fileName)").putData(data, metadata: nil) { [weak self] metadata, error in
             guard let self = self else { return }
             
@@ -38,7 +52,7 @@ final class StorageManager {
     }
     
     /// Upload image that will be sent in a conversation message
-    public func uploadMessagePhoto(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
+    public func uploadMessagePhoto(with data: Data, fileName: String, completion: @escaping UploadCompletion) {
         storage.child("message_images/\(fileName)").putData(data, metadata: nil) { [weak self] metadata, error in
             guard error == nil else {
                 // failed
@@ -62,7 +76,7 @@ final class StorageManager {
     }
 
     /// Upload video that will be sent in a conversation message
-    public func uploadMessageVideo(with fileUrl: URL, fileName: String, completion: @escaping UploadPictureCompletion) {
+    public func uploadMessageVideo(with fileUrl: URL, fileName: String, completion: @escaping UploadCompletion) {
         storage.child("message_videos/\(fileName)").putFile(from: fileUrl, metadata: nil) { [weak self] metadata, error in
             guard error == nil else {
                 // failed
