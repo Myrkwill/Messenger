@@ -212,11 +212,11 @@ final class DatabaseConversationManager {
 
             let messages: [Message] = value.compactMap { dictionary in
                 guard let name = dictionary["name"] as? String,
-                    let isRead = dictionary["is_read"] as? Bool,
+//                    let isRead = dictionary["is_read"] as? Bool,
                     let messageID = dictionary["id"] as? String,
                     let content = dictionary["content"] as? String,
                     let senderEmail = dictionary["sender_email"] as? String,
-                    let type = dictionary["type"] as? String,
+//                    let type = dictionary["type"] as? String,
                     let dateString = dictionary["date"] as? String,
                     let date = ChatViewController.dateFormatter.date(from: dateString)else {
                         return nil
@@ -224,47 +224,50 @@ final class DatabaseConversationManager {
                 var kind: MessageKind?
                 switch kind {
                 case .photo(_):
-//                    guard let imageUrl = URL(string: content),
-//                    let placeHolder = UIImage(systemName: "plus") else {
-//                        return nil
-//                    }
-//                    let media = Media(url: imageUrl,
-//                                      image: nil,
-//                                      placeholderImage: placeHolder,
-//                                      size: CGSize(width: 300, height: 300))
-//                    kind = .photo(media)
-                    break
+                    guard let imageUrl = URL(string: content),
+                    let placeholder = UIImage(systemName: "plus") else { return nil }
+                    
+                    let media = Media(
+                        url: imageUrl,
+                        image: nil,
+                        placeholderImage: placeholder,
+                        size: CGSize(width: 300, height: 300)
+                    )
+                    kind = .photo(media)
                 case .video(_):
-                    break
-//                    guard let videoUrl = URL(string: content),
-//                        let placeHolder = UIImage(named: "video_placeholder") else {
-//                            return nil
-//                    }
-//
-//                    let media = Media(url: videoUrl,
-//                                      image: nil,
-//                                      placeholderImage: placeHolder,
-//                                      size: CGSize(width: 300, height: 300))
-//                    kind = .video(media)
+                    guard let videoUrl = URL(string: content),
+                          let placeHolder = UIImage(named: "video_placeholder")
+                    else {
+                        return nil
+                    }
+
+                    let media = Media(
+                        url: videoUrl,
+                        image: nil,
+                        placeholderImage: placeHolder,
+                        size: CGSize(width: 300, height: 300)
+                    )
+                    kind = .video(media)
                 case .location(_):
-                    break
-//                    let locationComponents = content.components(separatedBy: ",")
-//                    guard let longitude = Double(locationComponents[0]),
-//                        let latitude = Double(locationComponents[1]) else {
-//                        return nil
-//                    }
-//                    print("Rendering location; long=\(longitude) | lat=\(latitude)")
-//                    let location = Location(location: CLLocation(latitude: latitude, longitude: longitude),
-//                                            size: CGSize(width: 300, height: 300))
-//                    kind = .location(location)
+                    let locationComponents = content.components(separatedBy: ",")
+                    guard let longitude = Double(locationComponents[0]),
+                          let latitude = Double(locationComponents[1])
+                    else {
+                        return nil
+                    }
+                    
+                    print("Rendering location; long=\(longitude) | lat=\(latitude)")
+                    let location = Location(
+                        location: CLLocation(latitude: latitude, longitude: longitude),
+                        size: CGSize(width: 300, height: 300)
+                    )
+                    kind = .location(location)
                 default:
                     kind = .text(content)
                 }
                 
 
-                guard let kind = kind else {
-                    return nil
-                }
+                guard let kind = kind else { return nil }
 
                 let sender = Sender(
                     photoURL: "",
@@ -314,32 +317,27 @@ final class DatabaseConversationManager {
             switch newMessage.kind {
             case .text(let messageText):
                 message = messageText
-            case .attributedText(_):
-                break
             case .photo(let mediaItem):
                 if let targetUrlString = mediaItem.url?.absoluteString {
                     message = targetUrlString
                 }
-                break
             case .video(let mediaItem):
                 if let targetUrlString = mediaItem.url?.absoluteString {
                     message = targetUrlString
                 }
-                break
             case .location(let locationData):
                 let location = locationData.location
                 message = "\(location.coordinate.longitude),\(location.coordinate.latitude)"
-                break
             default:
                 break
             }
 
-            guard let myEmmail = UserDefaults.standard.value(forKey: "email") as? String else {
+            guard let myEmail = UserDefaults.standard.value(forKey: "email") as? String else {
                 completion(false)
                 return
             }
 
-            let currentUserEmail = DatabaseManager.safeEmail(emailAddress: myEmmail)
+            let currentUserEmail = DatabaseManager.safeEmail(emailAddress: myEmail)
 
             let newMessageEntry: [String: Any] = [
                 "id": newMessage.messageId,

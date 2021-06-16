@@ -41,50 +41,69 @@ extension AppDelegate: GIDSignInDelegate {
             }
             return
         }
-        
-        guard let email = user.profile.email,
-              let firstName = user.profile.givenName,
-              let lastName = user.profile.familyName
-        else {
+
+        guard let user = user else {
             return
         }
-        
+
+        print("Did sign in with Google: \(user)")
+
+        guard let email = user.profile.email,
+            let firstName = user.profile.givenName,
+            let lastName = user.profile.familyName else {
+                return
+        }
+
         UserDefaults.standard.set(email, forKey: "email")
         UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
-        
-        DatabaseManager.shared.userExists(with: email) { exist in
-            if !exist {
-                let chatUser = ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email)
+
+        DatabaseManager.shared.userExists(with: email) { exists in
+            if !exists {
+                // insert to database
+                let chatUser = ChatAppUser(
+                    firstName: firstName,
+                    lastName: lastName,
+                    emailAddress: email
+                )
+                
                 DatabaseManager.shared.insertUser(with: chatUser) { success in
                     if success {
                         // upload image
-                        guard user.profile.hasImage, let url = user.profile.imageURL(withDimension: 200) else {
-                            return
-                        }
-                        
-                        URLSession.shared.dataTask(with: url) { data, _, error in
-                            guard let data = data else { return }
-                            let fileName = chatUser.profilePictureFileName
-                            StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName) { result in
-                                switch result {
-                                case .success(let downloadUrl):
-                                    UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
-                                    print(downloadUrl)
-                                case .failure(let error):
-                                    print("Storage manager error: \(error)")
+
+                        if user.profile.hasImage {
+                            guard let url = user.profile.imageURL(withDimension: 200) else {
+                                return
+                            }
+
+                            URLSession.shared.dataTask(with: url) { data, _, _ in
+                                guard let data = data else {
+                                    return
+                                }
+
+                                let filename = chatUser.profilePictureFileName
+                                StorageManager.shared.uploadProfilePicture(with: data, fileName: filename) { result in
+                                    switch result {
+                                    case .success(let downloadUrl):
+                                        UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                                        print(downloadUrl)
+                                    case .failure(let error):
+                                        print("Storage maanger error: \(error)")
+                                    }
                                 }
                             }
-                        }.resume()
+                            .resume()
+                        }
+
+
                     }
                 }
             }
         }
-        
+
         guard let authentication = user.authentication else {
             print("Missing auth object off of google user")
             return
         }
-        
         let credential = GoogleAuthProvider.credential(
             withIDToken: authentication.idToken,
             accessToken: authentication.accessToken
@@ -95,12 +114,12 @@ extension AppDelegate: GIDSignInDelegate {
                 print("failed to log in with google credential")
                 return
             }
-            
-            print("Successfully signed in with google credential")
+
+            print("Successfully signed in with Google cred.")
             NotificationCenter.default.post(name: .didLogInNotification, object: nil)
         }
     }
-    
+
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         print("Google user was disconnected")
     }
